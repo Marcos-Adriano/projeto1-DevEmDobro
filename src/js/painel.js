@@ -21,9 +21,10 @@ function esconderImagens() {
       imagem.classList.remove("mostrar");
     });
   }
-  function mostrarImagem() { 
+function mostrarImagem() { 
     imagensPainel[imagemAtual].classList.add("mostrar");
-  }
+}
+
 // quando clicar na seta pra avançar temos que
 //     esconder todas as imagens e mostrar a próxima imagem
 setaAvancar.addEventListener('click', function() {
@@ -33,19 +34,23 @@ setaAvancar.addEventListener('click', function() {
         return;
     }
     // a imagem atual começa em 0 pq é a primeira imagem
-    //     assim que for clicado no avançar eu preciso adicionar mais 1 ao contador de imagens
-    //     pra poder saber que agora eu vou mostrar a segunda imagem
+    // assim que for clicado no avançar eu preciso adicionar mais 1 ao contador de imagens
+    // pra poder saber que agora eu vou mostrar a segunda imagem
     imagemAtual++;
-    // se a opacidade da seta for diferente de 1
-    // remove a propriedade opacidade atual dela  
-    if (setaVoltar.style.opacity !== 1) {
-        setaVoltar.style.removeProperty("opacity");        
+    // se a imagem atual não for a primeira
+    // remove a propriedade opacidade atual dela
+    // remove a propriedade cursor dela
+    if (imagemAtual !== 0) {
+        setaVoltar.style.removeProperty("opacity");
+        setaVoltar.style.removeProperty("cursor");
       }
     // se a imagem que está mostrando na tela for a ultima 
-    // aplica opacidade de 50% nela
+    // aplica opacidade de 40% nela
+    // aplica cursor default nela
     if (imagemAtual === totalDeImagens) {
-        setaAvancar.style.opacity = 0.4;
-    } 
+      setaAvancar.style.opacity = 0.4;
+      setaAvancar.style.setProperty('cursor' , 'default');
+    }
     // esconder todas as imagens
     //         pegar todas as imagens usando DOM e remover a classe mostrar
     esconderImagens();
@@ -57,16 +62,19 @@ setaAvancar.addEventListener('click', function() {
 setaVoltar.addEventListener('click', function(){
     const totalDeImagens = imagensPainel.length - 1;
     if(imagemAtual === 0){
-        setaVoltar.style.opacity = 0.4;
-        return;
+      setaVoltar.style.opacity = 0.4;
+      return;
     }
     imagemAtual--;
-    if (setaAvancar.style.opacity !== 1) {
-        setaAvancar.style.removeProperty("opacity");
-        }
-        if (imagemAtual === 0) { 
-        setaVoltar.style.opacity = 0.4;
-        }
+    if (imagemAtual !== totalDeImagens) {
+      setaAvancar.style.removeProperty('opacity');
+      setaAvancar.style.removeProperty('cursor' , 'default');
+    }
+    if (imagemAtual === 0) { 
+      setaVoltar.style.opacity = 0.4;
+      setaVoltar.style.setProperty('cursor' , 'default')
+    }
+
     esconderImagens();
     mostrarImagem();
 })

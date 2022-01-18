@@ -127,7 +127,7 @@ html{
 }
 
 .conteudo-principal .paineis .projeto1 {
-    background-image: url(../imagens/painel1.jpg) ;
+    background-image: url('../imagens/painel1.jpg') ;
 
 }
 
@@ -148,6 +148,7 @@ html{
     color: white;
     text-transform: uppercase;
     font-size: calc(1em + 1vw);
+    margin: 0 auto;
 }
 
 .conteudo-principal .paineis .seta {
@@ -163,17 +164,12 @@ html{
 }
 
 .conteudo-principal .paineis .seta.btn-voltar {
-    left: 20px;
+    left: 1.4rem;
     transform: rotate(180deg);
 }
 
-/* .conteudo-principal .paineis .seta.btn-voltar:hover {
-    cursor: default;
-     
-} */
-
 .conteudo-principal .paineis .seta.btn-avancar {
-    right: 20px;
+    right: 1.4rem;
 }
 
 /* Painel */
